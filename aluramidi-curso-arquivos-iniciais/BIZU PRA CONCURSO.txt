@@ -1,0 +1,12 @@
+javascript - ponto e virgula é facultativo na maioria dos casos, verificar os casos onde nao é facultativo....
+++
+
+O script depende de elementos do body já carregados pelo navegador?
+
+ Alternativa correta! Quando o código JavaScript que vamos adicionar depende de elementos que estão no body, por exemplo um querySelector que espera receber determinado seletor, o local mais apropriado para sua inserção é dentro da tag body e na linha anterior ao fechamento da tag </body>. No head podemos inserir scripts, porém eles não devem ter dependencias de elementos do body, por exemplo uma biblioteca de funcionalidades.
+++
+
+
+let para adicionar um atributo
+
+let name = 'gu';
