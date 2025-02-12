@@ -1,8 +1,9 @@
 const notaPrimeiroBi = 8;
 const notaSegundoBi = 6.3;
-const notaTerceiroBi = -2;
+const notaTerceiroBi = 7;
 const notaQuartoBi = '5';
 
-const total = notaPrimeiroBi + notaSegundoBi + notaTerceiroBi + notaQuartoBi;
+let total = notaPrimeiroBi + notaSegundoBi + notaTerceiroBi + notaQuartoBi;
+export const notaFinal = (notaPrimeiroBi + notaSegundoBi + notaTerceiroBi + notaQuartoBi) /2
 
-console.log('A média é: ' +total.toFixed(2));
+//console.log(notaFinal);
