@@ -8,7 +8,7 @@ const nota4 = 6;
 const notas = [5, 5, 5, 5, 7];
 
 //notas.push(7);
-notas.pop();
+//notas.pop();
 
 const media = (notas[0] + notas[1] + notas[2] + notas [3]) / notas.length;
 
