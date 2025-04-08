@@ -27,13 +27,12 @@ const pomodoro = [
 ]
 
 export default function Index() {
-  const [timerType, setTimerType] = useState(pomodoro[0]);
-  const [seconds, setSeconds] = useState(pomodoro[0].initialValue);
 
-
+  const [timerType, setTimerType] = useState(pomodoro[0])
+  const [seconds, setSeconds] = useState(pomodoro[0].initialValue)
   const [timerRunning, setTimerRunning] = useState(false)
 
-  const timerRef = useRef(null);
+  const timerRef = useRef(null)
 
   const clear = () => {
     if (timerRef.current != null) {
@@ -47,15 +46,14 @@ export default function Index() {
     setTimerType(newTimerType)
     setSeconds(newTimerType.initialValue)
     clear()
-  }
+  }  
 
   const toggleTimer = () => {
     if (timerRef.current) {
-      // pausar
-      clear()   
-      return;
+      clear()
+      return
     }
-
+    
     setTimerRunning(true)
 
     const id = setInterval(() => {
@@ -66,43 +64,39 @@ export default function Index() {
         }
         return oldState - 1
       })
-
-      console.log('timer rolando');
-    }, 1000);
-    timerRef.current = id;
-  };
-
+    }, 1000)
+    timerRef.current = id
+  }
 
   return (
     <View
       style={styles.container}
     >
-      <Image source={timerType.image} />
+      <Image source={timerType.image}/>
       <View style={styles.actions}>
         <View style={styles.context}>
           {pomodoro.map(p => (
-            <ActionButton
+            <ActionButton 
               key={p.id}
-              active={timerType.id === p.id}
+              active={ timerType.id === p.id }
               onPress={() => toggleTimerType(p)}
               display={p.display}
             />
           ))}
         </View>
         <Timer totalSeconds={seconds} />
-        <FokusButton
+        <FokusButton 
           title={timerRunning ? 'Pausar' : 'Começar'}
-          icon={timerRunning ? <IconPause/> : <IconPlay/>}
+          icon={timerRunning ? <IconPause /> : <IconPlay />}
           onPress={toggleTimer}
         />
-
       </View>
       <View style={styles.footer}>
         <Text style={styles.footerText}>
           Projeto fictício e sem fins comerciais.
         </Text>
         <Text style={styles.footerText}>
-          Desenvolvido por Alura.
+          Desenvolvido por Alura. 
         </Text>
       </View>
     </View>
