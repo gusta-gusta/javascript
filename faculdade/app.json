@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "estacio_expo_aplicacao",
-    "slug": "estacio_expo_aplicacao",
+    "name": "faculdade",
+    "slug": "faculdade",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
