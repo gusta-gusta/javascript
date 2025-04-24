@@ -1,36 +1,55 @@
-import React, {useState} from 'react';
-                         import { Text, View, TextInput, TouchableOpacity }
-                                from 'react-native';
-                         import { Produto } from './dados/Produto';
-                         import GestorDados from './dados/GestorDados';
-                         import { styles } from './CommonStyles';
+import React, { useState, useEffect } from 'react';
+import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import GestorDados from './dados/GestorDados';
+import { styles } from './CommonStyles';
 
-                         export default function ProdutoForm( { navigation } ) {
-                           const gestor = new GestorDados();
-                           const[codigo,setCodigo] = useState('');
-                           const[nome,setNome] = useState('');
-                           const[quantidade,setQuantidade] = useState('');
-                           const salvar = () => {
-                             prodAux =
-                                 new Produto(parseInt(codigo),nome,parseInt(quantidade));
-                             gestor.adicionar(prodAux).then(
-                                 navigation.navigate('ListaProd'));
-                           }
+export default function ProdutoForm({ navigation, route }) {
+  const gestor = new GestorDados();
+  const [nome, setNome] = useState('');
+  const [quantidade, setQuantidade] = useState('');
+  const [codigo, setCodigo] = useState(null);
 
-                           return (
-                             <View style={styles.inputContainer}>
-                               <TextInput style={styles.input} placeholder='Codigo'
-                                 keyboardType={'numeric'} value={codigo}
-                                 onChangeText={setCodigo}/>
-                               <TextInput style={styles.input} placeholder='Nome'
-                                 value={nome} onChangeText={setNome}/>
-                               <TextInput style={styles.input} placeholder='Quantidade'
-                                 keyboardType={'numeric'} value={quantidade}
-                                 onChangeText={setQuantidade}/>
-                               <TouchableOpacity style={styles.button} onPress={salvar}>
-                                   <Text style={styles.buttonTextBig}>Salvar</Text>
-                               </TouchableOpacity>
-                             </View>
-                           );
-                         }
-                         
+  useEffect(() => {
+    if (route.params?.produto) {
+      const p = route.params.produto;
+      setNome(p.nome);
+      setQuantidade(p.quantidade.toString());
+      setCodigo(p.codigo);
+    }
+  }, [route.params]);
+
+  const salvar = async () => {
+    const produto = {
+      nome,
+      quantidade: parseInt(quantidade),
+      ...(codigo && { codigo })
+    };
+
+    if (codigo) {
+      await gestor.atualizar(produto);
+    } else {
+      await gestor.adicionar(produto);
+    }
+
+    navigation.goBack();
+  };
+
+  return (
+    <View style={styles.container}>
+      <TextInput style={styles.input}
+        placeholder="Nome"
+        value={nome}
+        onChangeText={setNome}
+      />
+      <TextInput style={styles.input}
+        placeholder="Quantidade"
+        value={quantidade}
+        onChangeText={setQuantidade}
+        keyboardType="numeric"
+      />
+      <TouchableOpacity style={styles.button} onPress={salvar}>
+        <Text style={styles.buttonTextBig}>Salvar</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}

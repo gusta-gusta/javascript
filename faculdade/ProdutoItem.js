@@ -1,20 +1,20 @@
 import React from 'react';
- import {Text, View, TouchableOpacity} from 'react-native';
- import { styles } from './CommonStyles';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { styles } from './CommonStyles';
 
- export default function ProdutoItem(props){
-     return (
-     <View style={styles.container} id={props.produto.codigo}>
-         <Text style={styles.textItem}>
-         {props.produto.codigo} - {props.produto.nome}</Text>
-         <Text style={styles.textItem}>
-         Quantidade: {props.produto.quantidade}</Text>
-         <View style={styles.buttonsContainer}>
-         <TouchableOpacity style={styles.deleteButton}
-                             onPress={props.onDelete}>
-             <Text style={styles.buttonText}>X</Text>
-         </TouchableOpacity>
-         </View>
-     </View>
-     );
- }
+export default function ProdutoItem({ produto, onDelete, onEdit }) {
+  return (
+    <View style={styles.itemContainer}>
+      <Text style={styles.textItem}>{produto.codigo} - {produto.nome}</Text>
+      <Text style={styles.textItem}>Qtd: {produto.quantidade}</Text>
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity style={styles.editButton} onPress={onEdit}>
+          <Text style={styles.buttonText}>Editar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.deleteButton} onPress={onDelete}>
+          <Text style={styles.buttonText}>X</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+}

@@ -2,42 +2,48 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
-    margin: 10,
-    padding: 10,
-    borderWidth: 1,
-    borderRadius: 5,
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#fff'
   },
-  textItem: {
-    fontSize: 18,
+  input: {
+    borderBottomWidth: 1,
+    padding: 8,
+    marginVertical: 10
   },
   button: {
-    backgroundColor: '#2196F3',
-    padding: 10,
-    margin: 10,
-    borderRadius: 5,
+    backgroundColor: '#007AFF',
+    padding: 15,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginVertical: 10
   },
   buttonTextBig: {
-    fontSize: 20,
-    color: '#fff',
-    textAlign: 'center',
+    fontSize: 18,
+    color: '#fff'
   },
-  deleteButton: {
-    backgroundColor: '#f44336',
-    padding: 5,
-    borderRadius: 3,
+  textItem: {
+    fontSize: 16
   },
-  buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
+  itemContainer: {
+    padding: 10,
+    borderBottomWidth: 1
   },
   buttonsContainer: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between'
   },
-  scrollContainer: {
-    width: '100%',
+  deleteButton: {
+    backgroundColor: '#FF3B30',
+    padding: 10,
+    borderRadius: 5
   },
-  itemsContainer: {
-    paddingBottom: 100,
+  editButton: {
+    backgroundColor: '#4CD964',
+    padding: 10,
+    borderRadius: 5
   },
+  buttonText: {
+    color: '#fff'
+  }
 });
