@@ -23,8 +23,8 @@ export default function ViaturaForm({ navigation, route }) {
       setRetiradoPor(r.retiradoPor);
       setViatura(r.viatura);
       setPlaca(r.placa);
-      setKmInicio(r.kmInicio.toString());
-      setKmFim(r.kmFim.toString());
+      setKmInicio(r.kmInicio);
+      setKmFim(r.kmFim);
       setData(r.data);
       setHora(r.hora);
       setAutorizadoPor(r.autorizadoPor);
@@ -36,8 +36,8 @@ export default function ViaturaForm({ navigation, route }) {
       retiradoPor,
       viatura,
       placa,
-      kmInicio: parseInt(kmInicio) || 0,
-      kmFim: parseInt(kmFim) || 0,
+      kmInicio,
+      kmFim,
       data,
       hora,
       autorizadoPor,
@@ -58,8 +58,8 @@ export default function ViaturaForm({ navigation, route }) {
       <TextInput style={styles.input} placeholder="Retirado por" value={retiradoPor} onChangeText={setRetiradoPor} />
       <TextInput style={styles.input} placeholder="Viatura" value={viatura} onChangeText={setViatura} />
       <TextInput style={styles.input} placeholder="Placa" value={placa} onChangeText={setPlaca} />
-      <TextInput style={styles.input} placeholder="KM Inicial" value={kmInicio} onChangeText={setKmInicio} keyboardType="numeric" />
-      <TextInput style={styles.input} placeholder="KM Final" value={kmFim} onChangeText={setKmFim} keyboardType="numeric" />
+      <TextInput style={styles.input} placeholder="KM Inicial" value={kmInicio} onChangeText={setKmInicio} />
+      <TextInput style={styles.input} placeholder="KM Final" value={kmFim} onChangeText={setKmFim} />
       <TextInput style={styles.input} placeholder="Data (DD/MM/AAAA)" value={data} onChangeText={setData} />
       <TextInput style={styles.input} placeholder="Hora (HH:MM)" value={hora} onChangeText={setHora} />
       <TextInput style={styles.input} placeholder="Autorizado por" value={autorizadoPor} onChangeText={setAutorizadoPor} />
