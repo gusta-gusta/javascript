@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const KEY = '@produtos';
+const KEY = '@registros_viatura';
 
 export default class GestorDados {
   async obterTodos() {
@@ -8,22 +8,22 @@ export default class GestorDados {
     return json ? JSON.parse(json) : [];
   }
 
-  async adicionar(produto) {
+  async adicionar(registro) {
     const lista = await this.obterTodos();
-    produto.codigo = Date.now(); // simples id
-    lista.push(produto);
+    registro.codigo = Date.now(); // gera um ID único simples
+    lista.push(registro);
     await AsyncStorage.setItem(KEY, JSON.stringify(lista));
   }
 
   async remover(codigo) {
     let lista = await this.obterTodos();
-    lista = lista.filter(p => p.codigo !== codigo);
+    lista = lista.filter(r => r.codigo !== codigo);
     await AsyncStorage.setItem(KEY, JSON.stringify(lista));
   }
 
-  async atualizar(produtoAtualizado) {
+  async atualizar(registroAtualizado) {
     const lista = await this.obterTodos();
-    const novaLista = lista.map(p => p.codigo === produtoAtualizado.codigo ? produtoAtualizado : p);
+    const novaLista = lista.map(r => r.codigo === registroAtualizado.codigo ? registroAtualizado : r);
     await AsyncStorage.setItem(KEY, JSON.stringify(novaLista));
   }
 }
